@@ -6,7 +6,7 @@ from sendgrid.helpers.mail import Mail
 app = Flask(__name__)
 
 SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
-MIA_EMAIL = "edilvision.preventivi@gmail.com"  # mittente e destinatario
+EMAIL_DESTINAZIONE = "edilvision.preventivi@gmail.com"
 
 @app.route("/")
 def home():
@@ -14,14 +14,13 @@ def home():
 
 @app.route("/send", methods=["POST"])
 def send():
-    nome = request.form["nome"]
-    email = request.form["email"]
-    lavoro = request.form["lavoro"]
-    metratura = request.form["metratura"]
-    messaggio = request.form["messaggio"]
+    nome = request.form.get("nome")
+    email = request.form.get("email")
+    lavoro = request.form.get("lavoro")
+    metratura = request.form.get("metratura")
+    messaggio = request.form.get("messaggio")
 
-    # Corpo email
-    body = f"""
+    testo_email = f"""
 Nuova richiesta preventivo – EdilVision
 
 Nome: {nome}
@@ -31,30 +30,24 @@ Metratura: {metratura} m²
 
 Messaggio:
 {messaggio}
-    """
+"""
 
     message = Mail(
-        from_email=MIA_EMAIL,
-        to_emails=MIA_EMAIL,
-        subject="Nuova richiesta preventivo",
-        plain_text_content=body
+        from_email=EMAIL_DESTINAZIONE,
+        to_emails=EMAIL_DESTINAZIONE,
+        subject="Nuova richiesta preventivo – EdilVision",
+        plain_text_content=testo_email
     )
 
     try:
         sg = SendGridAPIClient(SENDGRID_API_KEY)
-        response = sg.send(message)
-        print(response.status_code)
-        print(response.body)
-        print(response.headers)
+        sg.send(message)
     except Exception as e:
-        print("Errore invio email:", e)
-        return f"Errore nell'invio della richiesta: {e}"
+        print("ERRORE SENDGRID:", e)
+        return "Errore invio email", 500
 
     return redirect(url_for("grazie"))
 
 @app.route("/grazie")
 def grazie():
     return render_template("grazie.html")
-
-if __name__ == "__main__":
-    app.run(debug=True)
