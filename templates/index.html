@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>EdilVision - La tua casa, la nostra passione</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Strisce laterali di design -->
+<div class="stripe stripe-left"></div>
+<div class="stripe stripe-right"></div>
+
+<header>
+    <nav class="navbar">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="EdilVision Logo" class="logo">
+        <ul>
+            <li><a href="#chi-siamo">Chi siamo</a></li>
+            <li><a href="#servizi">Servizi</a></li>
+            <li><a href="#preventivo">Preventivo</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- HERO CENTRALE -->
+<section class="hero hero-central" style="background-image: url('{{ url_for('static', filename='img/hero_interno.jpg') }}');">
+    <div class="overlay-gradient"></div>
+    <div class="hero-content-central">
+        <h1>La tua casa,<br>la nostra passione</h1>
+        <p>Ristrutturazioni eleganti, funzionali e durature, con passione e precisione.</p>
+        <a href="#preventivo" class="btn-primary btn-large">Richiedi un preventivo</a>
+    </div>
+</section>
+
+<!-- CHI SIAMO -->
+<section class="card-section" id="chi-siamo" style="background-image: url('{{ url_for('static', filename='img/interno1.jpg') }}');">
+    <div class="overlay"></div>
+    <div class="card">
+        <h3>Chi siamo</h3>
+        <p>
+        EdilVision nasce oltre 40 anni fa nel cuore della Capitale, con l’obiettivo di trasformare ogni casa in uno spazio elegante, funzionale e confortevole. Nel tempo abbiamo realizzato centinaia di progetti, collaborando con architetti, designer e artigiani locali, ottenendo sempre risultati duraturi e di qualità.
+        </p>
+        <h4>I nostri valori</h4>
+        <ul class="valori-list">
+            <li><strong>Passione:</strong> ogni progetto è seguito come fosse casa nostra</li>
+            <li><strong>Precisione:</strong> cura maniacale dei dettagli</li>
+            <li><strong>Affidabilità:</strong> tempi e budget rispettati</li>
+            <li><strong>Sostenibilità:</strong> soluzioni eco-friendly e materiali certificati</li>
+        </ul>
+        <p class="risultati">
+        Oltre 100 clienti soddisfatti ogni anno e progetti completati con successo in tutta la Capitale.
+        </p>
+    </div>
+</section>
+
+<!-- SERVIZI -->
+<section class="card-section" id="servizi" style="background-image: url('{{ url_for('static', filename='img/interno2.jpg') }}');">
+    <div class="overlay"></div>
+    <div class="card">
+        <h3>I nostri servizi</h3>
+        <ul>
+            <li><strong>Ristrutturazioni complete di appartamenti e uffici</strong> – Progetti chiavi in mano, gestione completa dalla progettazione alla consegna finale.</li>
+            <li><strong>Bagni e cucine su misura</strong> – Design funzionale e materiali di alta qualità.</li>
+            <li><strong>Impianti elettrici e idraulici certificati</strong> – Sicurezza, efficienza e manutenzione garantita.</li>
+            <li><strong>Pittura, decorazioni e finiture di pregio</strong> – Cura dei dettagli per un risultato elegante e duraturo.</li>
+            <li><strong>Ottimizzazione degli spazi e design personalizzato</strong> – Collaboriamo con interior designer per valorizzare ogni ambiente.</li>
+            <li><strong>Consulenza materiali e scelta dei colori</strong> – Ti aiutiamo a scegliere le soluzioni migliori per stile e funzionalità.</li>
+            <li><strong>Ristrutturazioni sostenibili e moderne</strong> – Materiali eco-friendly e soluzioni efficienti per ridurre consumi e impatto ambientale.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- PRIMA E DOPO -->
+<section class="card-section" id="prima-dopo">
+    <div class="overlay"></div>
+    <div class="card">
+        <h3>Prima e Dopo</h3>
+        <p>Alcuni esempi reali delle nostre ristrutturazioni.</p>
+
+        <div class="before-after-container">
+
+            <!-- BAGNO -->
+            <div class="before-after">
+                <h4>Bagno</h4>
+                <div class="slider">
+                    <img src="{{ url_for('static', filename='img/bagno-prima.png') }}" class="img-before" alt="Bagno Prima">
+                    <img src="{{ url_for('static', filename='img/bagno-dopo.png') }}" class="img-after" alt="Bagno Dopo">
+                    <input type="range" min="0" max="100" value="50">
+                </div>
+            </div>
+
+            <!-- CAMERA -->
+            <div class="before-after">
+                <h4>Camera</h4>
+                <div class="slider">
+                    <img src="{{ url_for('static', filename='img/camera-prima.png') }}" class="img-before" alt="Camera Prima">
+                    <img src="{{ url_for('static', filename='img/camera-dopo.png') }}" class="img-after" alt="Camera Dopo">
+                    <input type="range" min="0" max="100" value="50">
+                </div>
+            </div>
+
+            <!-- SALONE -->
+            <div class="before-after">
+                <h4>Salone</h4>
+                <div class="slider">
+                    <img src="{{ url_for('static', filename='img/salone-prima.png') }}" class="img-before" alt="Salone Prima">
+                    <img src="{{ url_for('static', filename='img/salone-dopo.png') }}" class="img-after" alt="Salone Dopo">
+                    <input type="range" min="0" max="100" value="50">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- 4 IMMAGINI CON PARALLAX -->
+<section class="parallax" style="background-image: url('{{ url_for('static', filename='img/interno3.jpg') }}');"></section>
+<section class="parallax" style="background-image: url('{{ url_for('static', filename='img/interno4.jpg') }}');"></section>
+<section class="parallax" style="background-image: url('{{ url_for('static', filename='img/interno5.jpg') }}');"></section>
+<section class="parallax" style="background-image: url('{{ url_for('static', filename='img/interno6.jpg') }}');"></section>
+
+<!-- PREVENTIVO -->
+<section class="card-section" id="preventivo" style="background-image: url('{{ url_for('static', filename='img/interno1.jpg') }}');">
+    <div class="overlay"></div>
+    <div class="card">
+        <h3>Richiedi un preventivo gratuito</h3>
+
+        <form action="/send" method="POST">
+            <input type="text" name="nome" placeholder="Nome" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="lavoro" placeholder="Tipo di lavoro" required>
+            <input type="number" name="metratura" placeholder="Metratura (m²)" required>
+            <textarea name="messaggio" placeholder="Messaggio" rows="4"></textarea>
+            <button type="submit">Invia richiesta</button>
+        </form>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 EdilVision - Tutti i diritti riservati</p>
+</footer>
+
+<!-- SCRIPT ANIMAZIONI E SLIDER -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Animazioni fade-slide
+    const faders = document.querySelectorAll('.card-section, .parallax');
+
+    faders.forEach((fader, index) => {
+        fader.classList.add('fade-slide');
+
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    setTimeout(() => {
+                        entry.target.classList.add('show');
+                    }, index * 150);
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, {threshold:0.1});
+
+        observer.observe(fader);
+    });
+
+    // Slider Prima/Dopo
+    document.querySelectorAll('.slider').forEach(slider => {
+        const range = slider.querySelector('input');
+        const afterImg = slider.querySelector('.img-after');
+
+        afterImg.style.width = range.value + '%';
+
+        range.addEventListener('input', () => {
+            afterImg.style.width = range.value + '%';
+        });
+    });
+
+});
+</script>
+
+</body>
+</html>

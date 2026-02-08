@@ -1,0 +1,336 @@
+/* ===============================
+   BASE
+=============================== */
+body {
+    font-family: 'Lora', serif;
+    margin: 0;
+    color: #4a4032;
+    scroll-behavior: smooth;
+    background: #f9f5ef;
+}
+
+/* Strisce laterali di design */
+.stripe {
+    position: fixed;
+    top: 0;
+    width: 40px;
+    height: 100%;
+    background: rgba(201,143,94,0.2);
+    z-index: 1;
+}
+.stripe-left { left: 0; }
+.stripe-right { right: 0; }
+
+/* ===============================
+   NAVBAR
+=============================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: #f4ead9;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.logo {
+    height: 170px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+.logo:hover { transform: scale(1.05); }
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+}
+.navbar ul li a {
+    text-decoration: none;
+    color: #4a4032;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    position: relative;
+    transition: 0.3s;
+}
+.navbar ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #c98f5e;
+    left: 0;
+    bottom: -4px;
+    transition: width 0.3s;
+}
+.navbar ul li a:hover::after { width: 100%; }
+.navbar ul li a:hover { color: #c98f5e; transform: scale(1.05); }
+
+/* ===============================
+   HERO
+=============================== */
+.hero {
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.overlay-gradient {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to bottom, rgba(255,248,238,0.8), rgba(255,248,238,0.3));
+    z-index: 1;
+}
+.hero-content-central {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(255,248,238,0.6);
+    border-radius: 20px;
+}
+.hero-content-central h1 {
+    font-family:'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #b77b4d;
+}
+.hero-content-central p {
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    margin: 20px 0 35px;
+    color: #4a4032;
+}
+.btn-primary {
+    padding: 16px 36px;
+    background: #c98f5e;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-weight: 700;
+    box-shadow: 0 4px 18px rgba(201,143,94,0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn-primary:hover {
+    background: #b0774d;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 30px rgba(201,143,94,0.5);
+}
+.btn-primary.btn-large {
+    font-size: 20px;
+    padding: 18px 50px;
+    border-radius: 16px;
+}
+
+/* ===============================
+   CARD SECTION
+=============================== */
+.card-section {
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.card {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+    margin: auto;
+    padding: 40px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 16px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+    transition: all 0.5s ease;
+}
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+.card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: #b77b4d;
+    margin-top: 0;
+}
+.card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #c98f5e;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+.card ul {
+    padding-left: 20px;
+    color: #6a5f4c;
+    font-size: 18px;
+    font-family: 'Lora', serif;
+    margin-bottom: 20px;
+}
+.card li { margin-bottom: 10px; }
+.risultati {
+    font-style: italic;
+    color: #4a4032;
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+/* ===============================
+   FORM
+=============================== */
+.card form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+.card input, .card textarea {
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    font-family: 'Lora', serif;
+}
+.card input:focus, .card textarea:focus {
+    border-color: #c98f5e;
+    box-shadow: 0 0 10px rgba(201,143,94,0.3);
+}
+.card button {
+    padding: 16px;
+    background: #c98f5e;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.card button:hover {
+    background: #b0774d;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 20px rgba(201,143,94,0.5);
+}
+
+/* ===============================
+   FOOTER
+=============================== */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #f4ead9;
+    color: #4a4032;
+    font-size: 14px;
+    font-family: 'Lora', serif;
+}
+
+/* ===============================
+   PARALLAX
+=============================== */
+.parallax {
+    min-height: 80vh;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.8s ease, filter 0.5s ease;
+}
+.parallax:hover {
+    transform: scale(1.07);
+    filter: brightness(1.05);
+}
+
+/* ===============================
+   ANIMAZIONI FADE-SLIDE
+=============================== */
+.fade-slide {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+}
+.fade-slide.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===============================
+   PRIMA/DOPO SLIDER
+=============================== */
+#prima-dopo .card {
+    max-width: 1000px;  /* più larga della default 720px */
+    width: 90%;         /* occupa quasi tutta la larghezza del viewport */
+    margin: auto;
+}
+
+#prima-dopo .before-after-container {
+    gap: 50px; /* aumenta un po’ lo spazio tra i vari slider */
+}
+
+#prima-dopo .slider {
+    height: 600px;      /* slider più alto */
+}
+
+#prima-dopo .img-before,
+#prima-dopo .img-after {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* immagini riempiono lo slider senza deformarsi */
+}
+.before-after-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.before-after h4 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+.slider {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+.slider img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.img-after {
+    z-index: 2;
+}
+.slider input[type="range"] {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    z-index: 5;
+    cursor: pointer;
+}
+
+/* ===============================
+   RESPONSIVE
+=============================== */
+@media (max-width:1024px) {
+    .hero-content-central h1 { font-size: 42px; }
+}
+@media (max-width:768px) {
+    .hero-content-central h1 { font-size: 32px; }
+    .card h3 { font-size: 20px; }
+    .btn-primary.btn-large { padding: 14px 40px; font-size: 18px; }
+    .parallax { background-attachment: scroll; }
+}

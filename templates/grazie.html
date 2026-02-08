@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Grazie!</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="EdilVision Logo" class="logo">
+        <ul>
+            <li><a href="#chi-siamo">Chi siamo</a></li>
+            <li><a href="#servizi">Servizi</a></li>
+            <li><a href="#preventivo">Preventivo</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="card-section" style="background-image: url('{{ url_for('static', filename='img/interno1.jpg') }}');">
+    <div class="overlay"></div>
+    <div class="card">
+        <h3>Grazie per la tua richiesta!</h3>
+        <p>Ti risponderemo il prima possibile.</p>
+        <a href="/" class="btn-primary">Torna alla Home</a>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 EdilVision - Tutti i diritti riservati</p>
+</footer>
+</body>
+</html>
