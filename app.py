@@ -1,14 +1,12 @@
-# app.py
 from flask import Flask, render_template, request, redirect, url_for
-import smtplib
-from email.mime.text import MIMEText
 import os
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 app = Flask(__name__)
 
-# ================= CONFIGURAZIONE EMAIL =================
-MIA_EMAIL = os.environ.get("MIA_EMAIL")          # la tua email Gmail
-EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")  # la password app Gmail
+SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
+MIA_EMAIL = "edilvision.preventivi@gmail.com"  # mittente e destinatario
 
 @app.route("/")
 def home():
@@ -16,11 +14,11 @@ def home():
 
 @app.route("/send", methods=["POST"])
 def send():
-    nome = request.form.get("nome")
-    email = request.form.get("email")
-    lavoro = request.form.get("lavoro")
-    metratura = request.form.get("metratura")
-    messaggio = request.form.get("messaggio")
+    nome = request.form["nome"]
+    email = request.form["email"]
+    lavoro = request.form["lavoro"]
+    metratura = request.form["metratura"]
+    messaggio = request.form["messaggio"]
 
     # Corpo email
     body = f"""
@@ -35,32 +33,28 @@ Messaggio:
 {messaggio}
     """
 
-    # Creazione email
-    msg = MIMEText(body)
-    msg["Subject"] = "Nuova richiesta preventivo"
-    msg["From"] = MIA_EMAIL
-    msg["To"] = MIA_EMAIL
+    message = Mail(
+        from_email=MIA_EMAIL,
+        to_emails=MIA_EMAIL,
+        subject="Nuova richiesta preventivo",
+        plain_text_content=body
+    )
 
-    # Invio email
     try:
-        print("Provo a inviare email...")
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-            server.login(MIA_EMAIL, EMAIL_PASSWORD)
-            server.send_message(msg)
-        print("Email inviata correttamente!")
+        sg = SendGridAPIClient(SENDGRID_API_KEY)
+        response = sg.send(message)
+        print(response.status_code)
+        print(response.body)
+        print(response.headers)
     except Exception as e:
         print("Errore invio email:", e)
-        # opzionale: mostrare messaggio all'utente
         return f"Errore nell'invio della richiesta: {e}"
 
-    # Redirect alla pagina di conferma
     return redirect(url_for("grazie"))
 
 @app.route("/grazie")
 def grazie():
     return render_template("grazie.html")
 
-# Entry point per Render
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))
-    app.run(host="0.0.0.0", port=port, debug=True)
+    app.run(debug=True)
