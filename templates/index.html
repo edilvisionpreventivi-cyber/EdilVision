@@ -127,13 +127,22 @@
         <h3>Richiedi un preventivo gratuito</h3>
 
         <form action="/send" method="POST">
-            <input type="text" name="nome" placeholder="Nome" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="text" name="lavoro" placeholder="Tipo di lavoro" required>
-            <input type="number" name="metratura" placeholder="Metratura (m²)" required>
-            <textarea name="messaggio" placeholder="Messaggio" rows="4"></textarea>
-            <button type="submit">Invia richiesta</button>
-        </form>
+    <input type="text" name="nome" placeholder="Nome" required>
+    <input type="email" name="email" placeholder="Email" required>
+
+    <select name="lavoro" required>
+        <option value="Ristrutturazione completa">Ristrutturazione completa</option>
+        <option value="Bagno">Bagno</option>
+        <option value="Cucina">Cucina</option>
+    </select>
+
+    <input type="number" name="metratura" placeholder="Metri quadri" required>
+
+    <textarea name="messaggio" placeholder="Descrivi il lavoro"></textarea>
+
+    <button type="submit">Invia richiesta</button>
+</form>
+
 
     </div>
 </section>
