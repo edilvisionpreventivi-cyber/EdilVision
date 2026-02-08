@@ -26,7 +26,7 @@ Nuova richiesta preventivo – EdilVision
 
 Nome: {nome}
 Email: {email}
-Numeri: {numero}
+Numero: {numero}
 Tipo di lavoro: {lavoro}
 Metratura: {metratura} m²
 
