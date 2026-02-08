@@ -16,7 +16,8 @@ def home():
 def send():
     nome = request.form.get("nome")
     email = request.form.get("email")
-    lavoro = request.form.get("lavoro")
+    numero = request.form.get("numero di telefono")
+    lavoro = request.form.get("Tipo di lavoro")
     metratura = request.form.get("metratura")
     messaggio = request.form.get("messaggio")
 
@@ -25,6 +26,7 @@ Nuova richiesta preventivo – EdilVision
 
 Nome: {nome}
 Email: {email}
+Numeri: {numero}
 Tipo di lavoro: {lavoro}
 Metratura: {metratura} m²
 
