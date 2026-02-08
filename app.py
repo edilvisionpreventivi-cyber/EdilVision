@@ -16,7 +16,7 @@ def home():
 def send():
     nome = request.form.get("nome")
     email = request.form.get("email")
-    numero = request.form.get("numero di telefono")
+    numero = request.form.get("numero")
     lavoro = request.form.get("Tipo di lavoro")
     metratura = request.form.get("metratura")
     messaggio = request.form.get("messaggio")
